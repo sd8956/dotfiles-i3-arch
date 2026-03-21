@@ -9,7 +9,7 @@ sudo pacman -Sy
 
 # 2. Instalar paquetes oficiales
 echo "Instalando paquetes oficiales con pacman..."
-sudo pacman -S --needed neovim zed git ttf-jetbrains-mono-nerd steam ttf-liberation gamemode lib32-gamemode mangohud lib32-mangohud sdl2 evtest xss-lock imlib2 libev libxinerama libxrandr rofi polybar i3-wm picom python-gobject dunst libnotify lightdm lightdm-slick-greeter
+sudo pacman -S --needed timeshift cronie neovim zed git ttf-jetbrains-mono-nerd steam ttf-liberation gamemode lib32-gamemode mangohud lib32-mangohud sdl2 evtest xss-lock imlib2 libev libxinerama libxrandr rofi polybar i3-wm picom python-gobject dunst libnotify lightdm lightdm-slick-greeter
 
 # 3. Instalar paquetes de la comunidad (AUR)
 echo "Instalando paquetes de AUR con yay..."
@@ -46,6 +46,9 @@ sudo chmod +x /usr/lib/systemd/system-sleep/betterlockscreen
 # Desactivar otros gestores y activar LightDM
 sudo systemctl disable gdm sddm lxdm 2>/dev/null
 sudo systemctl enable lightdm -f
+
+# ACtivar el servicio de cronie
+sudo systemctl enable cronie
 
 # 7. Instalar Neovim (LazyVim)
 echo "Configurando Neovim (LazyVim)..."
