@@ -1,0 +1,89 @@
+configuration {
+    show-icons:         true;
+    icon-theme:         "Papirus-Dark";
+    display-drun:       ""; /* Icono de lupa */
+    drun-display-format:"{name}";
+    font:               "JetBrainsMono Nerd Font 12";
+}
+
+* {
+    /* Colores TokyoNight */
+    background:         #1a1b26cc; /* Con transparencia para el blur */
+    background-alt:     #24283b;
+    foreground:         #a9b1d6;
+    selected:           #7aa2f7;
+    active:             #9ece6a;
+    urgent:             #f7768e;
+    
+    background-color:   transparent;
+    text-color:         @foreground;
+}
+
+window {
+    transparency:       "real";
+    background-color:   @background;
+    border:             2px;
+    border-color:       @selected;
+    border-radius:      12px;
+    width:              700px;
+    location:           center;
+    anchor:             center;
+}
+
+inputbar {
+    background-color:   @background-alt;
+    text-color:         @foreground;
+    expand:             false;
+    border-radius:      10px;
+    margin:             20px;
+    padding:            15px;
+    children:           [ prompt, entry ];
+}
+
+prompt {
+    background-color:   transparent;
+    text-color:         @selected;
+    font:               "JetBrainsMono Nerd Font 14";
+    margin:             0px 15px 0px 0px;
+}
+
+entry {
+    background-color:   transparent;
+    text-color:         @foreground;
+    placeholder:        "Buscar aplicación...";
+    placeholder-color:  #565f89;
+    expand:             true;
+    horizontal-align:   0;
+}
+
+listview {
+    columns:            2;
+    lines:              8;
+    cycle:              true;
+    dynamic:            true;
+    layout:             vertical;
+    margin:             0px 20px 20px 20px;
+}
+
+element {
+    orientation:        horizontal;
+    border-radius:      8px;
+    padding:            10px;
+    spacing:            15px;
+}
+
+element selected {
+    background-color:   @selected;
+    text-color:         #15161e;
+}
+
+element-icon {
+    size:               32px;
+    background-color:   transparent;
+}
+
+element-text {
+    vertical-align:     0.5;
+    background-color:   transparent;
+    text-color:         inherit;
+}

@@ -1,0 +1,42 @@
+[global]
+    # Configuración general (Notificaciones normales arriba a la derecha)
+    width = 300
+    height = 100
+    origin = top-right
+    offset = 20x20
+    padding = 15
+    horizontal_padding = 15
+    frame_width = 2
+    frame_color = "#7aa2f7"
+    corner_radius = 12
+    font = "JetBrainsMono Nerd Font 11"
+    
+    # Colores TokyoNight
+    background = "#1a1b26"
+    foreground = "#a9b1d6"
+    
+    # Formato normal (Título en negrita y mensaje abajo)
+    format = "<b>%s</b>\n%b"
+
+# --- LA MAGIA ESTÁ AQUÍ ---
+[KBD_OSD]
+    # Esta regla atrapa solo los avisos de nuestro script
+    appname = "KBD_OSD"
+    
+    # Lo manda al centro de la pantalla
+    origin = center
+    offset = 0x0
+    
+    # Lo hace cuadrado
+    width = 120
+    height = 120
+    
+    # Formato: Solo el icono centrado y con fuente gigante
+    font = "JetBrainsMono Nerd Font 60"
+    format = "<span foreground='#7aa2f7'>%s</span>"
+    alignment = center
+    vertical_alignment = center
+    
+    # Borde opcional (puedes poner frame_width = 0 si lo quieres sin borde)
+    frame_width = 2
+    frame_color = "#9ece6a"
