@@ -1,0 +1,8 @@
+theme = TokyoNight
+font-family = "JetBrainsMono Nerd Font"
+window-padding-x = 10
+window-padding-y = 10
+background-opacity = 0.85
+background-blur = true
+cursor-style = block
+window-decoration = false
