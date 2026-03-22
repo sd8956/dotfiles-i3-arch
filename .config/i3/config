@@ -231,3 +231,4 @@ exec --always xss-lock --transfer-sleep-lock -- betterlockscreen -l blur
 # Reglas para el OSD del teclado (Candado centrado)
 for_window [class="YadOsd"] floating enable
 for_window [class="YadOsd"] border pixel 0
+exec_always --no-startup-id /usr/bin/lxqt-policykit-agent &

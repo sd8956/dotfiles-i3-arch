@@ -14,6 +14,7 @@ cp -r ~/.config/polybar "$DIR/.config/" 2>/dev/null || echo "⚠️  No se encon
 cp -r ~/.config/rofi "$DIR/.config/" 2>/dev/null || echo "⚠️  No se encontró rofi"
 cp -r ~/.config/betterlockscreen "$DIR/.config/" 2>/dev/null || echo "⚠️  No se encontró betterlockscreen"
 cp -r ~/.config/dunst "$DIR/.config/" 2>/dev/null || echo "⚠️  No se encontró dunst"
+cp -r ~/.config/gtk-3.0 "$DIR/.config/" 2>/dev/null
 cp ~/.zshrc "$DIR/" 2>/dev/null || echo "⚠️  No se encontró .zshrc"
 
 echo "Copiando configuraciones del sistema (LightDM)..."
