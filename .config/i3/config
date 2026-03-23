@@ -232,3 +232,4 @@ exec --always xss-lock --transfer-sleep-lock -- betterlockscreen -l blur
 for_window [class="YadOsd"] floating enable
 for_window [class="YadOsd"] border pixel 0
 exec_always --no-startup-id /usr/bin/lxqt-policykit-agent &
+exec --no-startup-id numlockx on
