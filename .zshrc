@@ -116,3 +116,14 @@ alias zed="zeditor"
 
 # opencode
 export PATH=/home/sd/.opencode/bin:$PATH
+# Auto-iniciar tmux asegurando una sesión única
+if [ -z "$TMUX" ]; then
+    exec tmux new-session -A -s principal
+fi
+export PATH="$PATH:/home/sd/.local/bin"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
