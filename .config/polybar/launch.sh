@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# i3 (exec_always) and the autorandr postswitch hook both run this at login.
+# Run one at a time, or each kills the other's bars and both launch theirs
+# (two bars per monitor). Bars must not inherit the lock fd (9>&-), or they
+# would hold it forever and block the next run.
+exec 9>"${XDG_RUNTIME_DIR:-/tmp}/polybar-launch.lock"
+flock 9
+
 # Matar cualquier instancia de Polybar que esté corriendo
 killall -q polybar
 
@@ -18,8 +25,8 @@ fi
 # Detectar monitores y lanzar una barra en cada uno
 if type "xrandr"; then
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload mi_barra &
+    MONITOR=$m polybar --reload mi_barra 9>&- &
   done
 else
-  polybar --reload mi_barra &
+  polybar --reload mi_barra 9>&- &
 fi
