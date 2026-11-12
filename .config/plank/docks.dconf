@@ -1,0 +1,10 @@
+[dock1]
+alignment='center'
+dock-items=['thunar.dockitem', 'com.mitchellh.ghostty.dockitem', 'google-chrome.dockitem', 'dev.zed.Zed.dockitem', 'obsidian.dockitem', 'spotify.dockitem', 'discord.dockitem', 'steam.dockitem']
+hide-mode='none'
+icon-size=36
+position='bottom'
+show-dock-item=false
+theme='TokyoNight'
+zoom-enabled=false
+zoom-percent=140

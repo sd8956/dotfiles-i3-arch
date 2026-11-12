@@ -1,0 +1,5 @@
+#!/bin/sh
+# Runs after autorandr changes the monitor layout (login, hotplug, profile switch):
+# re-fit the wallpaper and relaunch one bar per connected monitor.
+"$HOME/.config/i3/wallpaper.sh" &
+"$HOME/.config/polybar/launch.sh" >/dev/null 2>&1 &

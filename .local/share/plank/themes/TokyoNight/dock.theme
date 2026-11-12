@@ -1,0 +1,38 @@
+# TokyoNight macOS-style dock theme for Plank.
+# Colors are R;;G;;B;;A (0-255).
+# Bounce heights are 0: i3 reserves the whole Plank window height as dock area,
+# and bounce headroom would make that area much taller than the dock itself.
+
+[PlankTheme]
+TopRoundness=12
+BottomRoundness=12
+LineWidth=1
+OuterStrokeColor=65;;72;;104;;200
+FillStartColor=26;;27;;38;;220
+FillEndColor=26;;27;;38;;220
+InnerStrokeColor=255;;255;;255;;18
+
+[PlankDockTheme]
+HorizPadding=4
+TopPadding=3
+BottomPadding=3
+ItemPadding=5
+IndicatorSize=4
+IconShadowSize=2
+UrgentBounceHeight=0
+LaunchBounceHeight=0
+FadeOpacity=1
+ClickTime=300
+UrgentBounceTime=600
+LaunchBounceTime=600
+ActiveTime=300
+SlideTime=300
+FadeTime=250
+HideTime=250
+GlowSize=30
+GlowTime=10000
+GlowPulseTime=2000
+UrgentHueShift=150
+ItemMoveTime=450
+CascadeHide=true
+BadgeColor=247;;118;;142;;255

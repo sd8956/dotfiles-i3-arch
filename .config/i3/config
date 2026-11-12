@@ -95,6 +95,9 @@ bindsym $mod+h split h
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+# macOS-style maximize: float above the others, keep the bar visible
+bindsym $mod+m exec --no-startup-id ~/.config/i3/maximize.sh
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -204,7 +207,9 @@ bindsym --release Num_Lock exec --no-startup-id ~/.config/i3/lock_osd.sh num
         #status_command i3status
 #}
 
-exec_always --no-startup-id bash ~/.screenlayout/monitor_setup.sh
+# Monitor layout: saved autorandr profile when its exact monitors are connected
+# (matched by EDID), otherwise every screen side by side.
+exec_always --no-startup-id autorandr --change --default horizontal
 
 # Quitar bordes feos de las ventanas
 default_border pixel 2
@@ -223,14 +228,20 @@ client.unfocused        #292e42 #292e42 #c0caf5 #292e42   #292e42
 client.urgent           #f7768e #f7768e #ffffff #f7768e   #f7768e
 
 
-exec_always --no-startup-id feh --bg-fill ~/Wallpapers/gargantua-black-3840x2160-9621.jpg
+# exec_always --no-startup-id feh --bg-fill ~/Wallpapers/gargantua-black-3840x2160-9621.jpg
+
+# Wallpaper on every connected monitor (video with xwinwrap, or image with feh)
+exec --no-startup-id ~/.config/i3/wallpaper.sh
+
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id picom -b
+exec --no-startup-id plank
 for_window [class="Rofi"] floating enable
 exec --always xss-lock --transfer-sleep-lock -- betterlockscreen -l blur
 # Reglas para el OSD del teclado (Candado centrado)
 for_window [class="YadOsd"] floating enable
 for_window [class="YadOsd"] border pixel 0
+# Invisible slot keeper used by maximize.sh
+for_window [class="MaxPlaceholder"] border pixel 0
 exec_always --no-startup-id /usr/bin/lxqt-policykit-agent &
 exec --no-startup-id numlockx on
-
