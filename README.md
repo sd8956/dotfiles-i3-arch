@@ -54,7 +54,9 @@ Este setup está optimizado para ofrecer el máximo rendimiento en un entorno mu
 | `$mod+Tab` / `$mod+Shift+Tab` | Cambiar de ventana estilo ⌘+Tab (mantener Super) |
 | `$mod+f` | Pantalla completa |
 | `$mod+m` | Maximizar estilo macOS (repetir para restaurar) |
-| `$mod+\|` / `$mod+Shift+\|` | Mission Control: monitor actual / todos los monitores (tecla a la izquierda del 1) |
+| `$mod+\|` / `$mod+Shift+\|` | Mission Control: monitor actual / todos los monitores (tecla a la izquierda del 1; abre al soltar) |
+| `$mod+1` … `$mod+0` | Ir al workspace 1–10 (se crea solo si no existe) |
+| `$mod+Shift+1` … `$mod+Shift+0` | Mover la ventana enfocada a ese workspace |
 | `$mod+Shift+space` | Alternar ventana flotante / tiling |
 | `$mod+Ctrl+space` | Mover el foco entre ventanas flotantes y tiling |
 | `$mod+Shift+q` | Cerrar ventana |
@@ -115,7 +117,7 @@ El script escribe en la carpeta donde vive (sin importar dónde clonaste el repo
 * `.config/picom/`: Compositor (blur, sombras, esquinas redondeadas y animaciones).
 * `.config/plank/` y `.local/share/plank/themes/`: Lanzadores y ajustes del dock (`docks.dconf`) y su tema TokyoNight.
 * `.config/autorandr/`: Perfil de monitores de cada PC y hook que reacomoda wallpaper y barra.
-* `.config/rofi/`: Temas `.rasi` estilo TokyoNight (launcher, Spotlight, Centro de Control, apagado) y los scripts del Centro de Control y del menú de apagado.
+* `.config/rofi/`: Temas `.rasi` estilo TokyoNight (launcher, Spotlight, Centro de Control, apagado) y los scripts del Centro de Control, del historial del portapapeles (`clipboard.sh`) y del menú de apagado.
 * `.config/skippy-xd/`: Mission Control (colores y esquinas TokyoNight).
 * `.config/greenclip.toml`: Historial del portapapeles (tamaño, imágenes, apps excluidas).
 * `.config/dunst/`: Reglas de notificaciones y diseño visual.
@@ -130,3 +132,5 @@ El script escribe en la carpeta donde vive (sin importar dónde clonaste el repo
 ## 📝 Notas Adicionales
 * Requiere un compositor activo (`picom`, incluido) para las transparencias, el blur y las esquinas redondeadas de la barra, el dock y el OSD de Python.
 * Los iconos del tray (wifi, Steam) no pueden ser transparentes en Polybar; por eso la barra usa ~90% de opacidad y `launch.sh` fija un color de fondo que se funde con ella.
+* Mission Control se abre al **soltar** las teclas: con la tecla mantenida, la repetición automática lo llamaría dos veces y la segunda llamada lo cierra.
+* `backup_dotfiles.sh` copia la configuración del login **desde `/etc/lightdm`**. Si editás `system/etc/lightdm/` en el repo, aplicala con `sudo cp` antes de correr el backup o el cambio se pierde.
