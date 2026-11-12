@@ -98,6 +98,10 @@ bindsym $mod+f fullscreen toggle
 # macOS-style maximize: float above the others, keep the bar visible
 bindsym $mod+m exec --no-startup-id ~/.config/i3/maximize.sh
 
+# Mission Control (skippy-xd): key left of 1 (bindcode 49, layout independent)
+bindcode $mod+49 exec --no-startup-id skippy-xd --expose
+bindcode $mod+Shift+49 exec --no-startup-id skippy-xd --paging
+
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
@@ -236,6 +240,7 @@ exec --no-startup-id ~/.config/i3/wallpaper.sh
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id picom -b
 exec --no-startup-id plank
+exec --no-startup-id skippy-xd --start-daemon
 for_window [class="Rofi"] floating enable
 exec --always xss-lock --transfer-sleep-lock -- betterlockscreen -l blur
 # Reglas para el OSD del teclado (Candado centrado)
