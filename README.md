@@ -21,18 +21,21 @@ Este setup está optimizado para ofrecer el máximo rendimiento en un entorno mu
 ## ✨ Características Destacadas
 
 * **Gestor de Ventanas:** i3wm configurado para un flujo de trabajo rápido con atajos de teclado y reglas de ventanas flotantes específicas.
-* **Barra de Estado:** Polybar estilo barra de menú de macOS: logo de Arch (abre el launcher), nombre de la app enfocada, workspaces, y a la derecha tray, stats, volumen, fecha y menú de control. Fondo translúcido con blur de picom.
-* **Compositor (picom):** esquinas redondeadas, blur, sombras suaves y animaciones de apertura/cierre/redimensionado.
+* **Barra de Estado:** Polybar estilo barra de menú de macOS: logo de Arch (abre el launcher), nombre de la app enfocada y workspaces; al centro lo que suena (Spotify o cualquier reproductor MPRIS) con botones anterior / pausa / siguiente; a la derecha tray, stats, volumen, fecha y el ⚙ del Centro de Control. Fondo translúcido con blur de picom.
+* **Compositor (picom):** esquinas redondeadas, blur, sombras suaves y animaciones de apertura/cierre/redimensionado. Las ventanas en pantalla completa (juegos) se saltan el compositor: sin costo ni latencia extra.
+* **Centro de Control (⚙ en la barra):** Wi-Fi (redes, contraseña, encender/apagar), Bluetooth (dispositivos vinculados), sonido, No Molestar y apagado, con un solo clic.
+* **Mission Control (skippy-xd):** `$mod+|` muestra todas las ventanas del monitor en miniatura; `$mod+Shift+|` muestra los workspaces.
 * **Maximizar estilo macOS (`$mod+m`):** la ventana flota sobre las demás ocupando el workspace sin tapar la barra ni el dock; repetir el atajo la restaura. `$mod+f` sigue siendo pantalla completa.
 * **Dock (Plank):** dock inferior estilo macOS con tema TokyoNight propio y lanzadores fijos (Thunar, Ghostty, Chrome, Zed, Obsidian, Spotify, Discord, Steam).
 * **Fondo animado:** video en loop (`xwinwrap` + `mpv`) en cada monitor conectado; si no hay video, usa una imagen estática con `feh`.
 * **Monitores portables (autorandr):** el layout guardado solo se aplica cuando están conectados esos monitores exactos (por EDID); en otra PC las pantallas se ponen una al lado de la otra. El wallpaper y la barra se reacomodan solos al cambiar de monitores.
 * **Lanzadores (Rofi):**
-  * **App Launcher:** Cajón de aplicaciones centrado, con barra de búsqueda, soporte para iconos (Papirus-Dark) y fondo desenfocado.
+  * **Spotlight (`$mod+space`):** una barra de búsqueda grande en el tercio superior, resultados en una columna.
+  * **App Launcher (`$mod+d`):** Cajón de aplicaciones centrado, con barra de búsqueda, soporte para iconos (Papirus-Dark) y fondo desenfocado.
   * **Power Menu:** Menú interactivo flotante para apagar, reiniciar o suspender.
-* **OSD Personalizado (Python GTK):** Un motor gráfico hecho a medida para notificaciones de hardware. Al presionar *Caps Lock* o *Num Lock*, dibuja un popup flotante, redondeado y milimétricamente centrado en pantalla, sin interrumpir la escritura.
+* **OSD Personalizado (Python GTK + Cairo):** Al presionar *Caps Lock* o *Num Lock*, dibuja un popup redondeado en el centro del monitor activo, sin interrumpir la escritura. El icono se centra por su dibujo real (no por las métricas de la fuente), así queda exacto con cualquier glifo de Nerd Font.
 * **Pantalla de Bloqueo:** Betterlockscreen con efecto blur integrado mediante scripts para asegurar el bloqueo antes de la suspensión del sistema.
-* **Notificaciones:** Dunst configurado para mantener la estética global del sistema y centrar alertas críticas.
+* **Notificaciones:** Dunst con tarjetas estilo macOS arriba a la derecha: translúcidas, redondeadas, con icono de la app, barra de progreso y borde rojo para alertas críticas (que se quedan hasta cerrarlas).
 * **Terminal y Shell:** Ghostty + zsh con Oh My Zsh, Powerlevel10k, autosugerencias y resaltado de sintaxis.
 
 ## ⌨️ Atajos Principales
@@ -42,11 +45,14 @@ Este setup está optimizado para ofrecer el máximo rendimiento en un entorno mu
 | Atajo | Acción |
 |-------|--------|
 | `$mod+Return` | Terminal (Ghostty) |
-| `$mod+d` | Lanzador de aplicaciones (Rofi) |
+| `$mod+space` | Spotlight (buscar y abrir apps) |
+| `$mod+d` | Lanzador de aplicaciones en grilla (Rofi) |
 | `$mod+Tab` | Cambiar entre ventanas abiertas |
 | `$mod+f` | Pantalla completa |
 | `$mod+m` | Maximizar estilo macOS (repetir para restaurar) |
+| `$mod+\|` / `$mod+Shift+\|` | Mission Control: ventanas / workspaces (tecla a la izquierda del 1) |
 | `$mod+Shift+space` | Alternar ventana flotante / tiling |
+| `$mod+Ctrl+space` | Mover el foco entre ventanas flotantes y tiling |
 | `$mod+Shift+q` | Cerrar ventana |
 | `$mod+r` | Modo redimensionar |
 | `$mod+b` / `$mod+e` / `$mod+v` / `$mod+z` | Chrome / Thunar / VS Code / Zed |
@@ -100,11 +106,12 @@ El script escribe en la carpeta donde vive (sin importar dónde clonaste el repo
 ## 📂 Estructura del Repositorio
 
 * `.config/i3/`: Configuración principal del gestor de ventanas, scripts de bloqueo (Bash), OSD (Python), maximizar (`maximize.sh`) y fondo animado (`wallpaper.sh`).
-* `.config/polybar/`: Barra superior estilo macOS, su lanzador y el script de la app enfocada.
+* `.config/polybar/`: Barra superior estilo macOS, su lanzador y los scripts de la app enfocada y del reproductor.
 * `.config/picom/`: Compositor (blur, sombras, esquinas redondeadas y animaciones).
 * `.config/plank/` y `.local/share/plank/themes/`: Lanzadores y ajustes del dock (`docks.dconf`) y su tema TokyoNight.
 * `.config/autorandr/`: Perfil de monitores de cada PC y hook que reacomoda wallpaper y barra.
-* `.config/rofi/`: Temas `.rasi` estilo TokyoNight y scripts del menú de apagado y cajón de apps.
+* `.config/rofi/`: Temas `.rasi` estilo TokyoNight (launcher, Spotlight, Centro de Control, apagado) y los scripts del Centro de Control y del menú de apagado.
+* `.config/skippy-xd/`: Mission Control (colores y esquinas TokyoNight).
 * `.config/dunst/`: Reglas de notificaciones y diseño visual.
 * `.config/betterlockscreen/`: Variables de color para el anillo de bloqueo.
 * `.config/ghostty/` y `.config/gtk-3.0/`: Terminal y tema GTK.

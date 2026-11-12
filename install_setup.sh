@@ -16,7 +16,7 @@ PACMAN_PKGS=(
     # Escritorio: i3, barra, dock, lanzadores, compositor, notificaciones
     i3-wm polybar plank autorandr rofi picom dunst libnotify dex numlockx yad
     xss-lock imlib2 libev libxinerama libxrandr xorg-xrandr xorg-xprop
-    feh mpv maim xclip xdotool python-gobject lxqt-policykit
+    feh mpv maim xclip xdotool python-gobject python-cairo lxqt-policykit playerctl
     # Apps del entorno
     ghostty thunar btop pavucontrol libpulse gparted baobab network-manager-applet
     obsidian discord
@@ -42,7 +42,7 @@ fi
 
 echo "Instalando paquetes de AUR con yay..."
 yay -S --needed jstest-gtk-git boxflat betterlockscreen tokyonight-gtk-theme-git \
-    xwinwrap-0.9-bin google-chrome visual-studio-code-bin spotify
+    xwinwrap-0.9-bin google-chrome visual-studio-code-bin spotify skippy-xd-git
 
 # 4. Restaurar configuraciones de usuario
 echo "Restaurando dotfiles de usuario..."
@@ -62,6 +62,7 @@ cp -r "$DIR/.local/share/plank/themes/"* ~/.local/share/plank/themes/
 dconf load /net/launchpad/plank/docks/ < ~/.config/plank/docks.dconf
 
 chmod +x ~/.config/rofi/powermenu.sh
+chmod +x ~/.config/rofi/control-center.sh
 chmod +x ~/.config/i3/sleep_lock.sh
 chmod +x ~/.config/i3/lock_osd.sh
 chmod +x ~/.config/i3/osd_ui.py
@@ -70,6 +71,7 @@ chmod +x ~/.config/i3/wallpaper.sh
 chmod +x ~/.config/autorandr/postswitch
 chmod +x ~/.config/polybar/launch.sh
 chmod +x ~/.config/polybar/scripts/active-app.sh
+chmod +x ~/.config/polybar/scripts/media.sh
 
 # 5. Shell: Oh My Zsh + Powerlevel10k + plugins
 echo "Configurando zsh (Oh My Zsh, Powerlevel10k y plugins)..."

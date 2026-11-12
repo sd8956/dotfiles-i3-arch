@@ -23,6 +23,7 @@ mkdir -p "$DIR/.local/share/plank/themes" && cp -r ~/.local/share/plank/themes/T
 cp -r ~/.config/gtk-3.0 "$DIR/.config/" 2>/dev/null
 cp -r ~/.config/ghostty "$DIR/.config/" 2>/dev/null
 cp -r ~/.config/autorandr "$DIR/.config/" 2>/dev/null || echo "⚠️  No se encontró autorandr"
+cp -r ~/.config/skippy-xd "$DIR/.config/" 2>/dev/null || echo "⚠️  No se encontró skippy-xd"
 cp ~/.p10k.zsh "$DIR/" 2>/dev/null || echo "⚠️  No se encontró .p10k.zsh"
 
 # Only the wallpapers the configs use (~/Wallpapers holds much more)

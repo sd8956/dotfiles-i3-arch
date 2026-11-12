@@ -1,2 +1,5 @@
 # Machine-local secrets (sourced by .zshrc, never versioned)
 .zshrc.local
+
+# Python bytecode (e.g. from importing osd_ui.py)
+__pycache__/
