@@ -206,7 +206,8 @@ bindsym --release Ctrl+Print exec --no-startup-id ~/.config/i3/screenshot.sh win
 bindsym $mod+e exec thunar
 # --- Editores de Código ---
 # Mod + v -> VS Code
-bindsym $mod+v exec code
+# Clipboard history (greenclip), Spotlight look; Enter pastes into the clipboard
+bindsym $mod+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -display-clipboard "󰅇" -hover-select -me-select-entry MouseSecondary -me-accept-entry '!MousePrimary' -theme ~/.config/rofi/themes/spotlight.rasi -theme-str 'entry { placeholder: "Clipboard History"; }'
 # Mod + z -> Zed
 bindsym $mod+z exec zeditor
 bindsym $mod+l exec betterlockscreen -l blur
@@ -251,6 +252,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id picom -b
 exec --no-startup-id plank
 exec --no-startup-id skippy-xd --start-daemon
+exec --no-startup-id greenclip daemon
 for_window [class="Rofi"] floating enable
 # Reglas para el OSD del teclado (Candado centrado)
 for_window [class="YadOsd"] floating enable

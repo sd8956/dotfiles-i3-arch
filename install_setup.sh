@@ -42,7 +42,7 @@ fi
 
 echo "Instalando paquetes de AUR con yay..."
 yay -S --needed jstest-gtk-git boxflat betterlockscreen tokyonight-gtk-theme-git \
-    xwinwrap-0.9-bin google-chrome visual-studio-code-bin spotify skippy-xd-git
+    xwinwrap-0.9-bin google-chrome visual-studio-code-bin spotify skippy-xd-git rofi-greenclip
 
 # 4. Restaurar configuraciones de usuario
 echo "Restaurando dotfiles de usuario..."
