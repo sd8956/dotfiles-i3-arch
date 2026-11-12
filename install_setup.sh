@@ -97,16 +97,12 @@ if [ -d "$DIR/system/etc/lightdm" ]; then
     sudo cp -r "$DIR/system/etc/lightdm/"* /etc/lightdm/
 fi
 
-# 7. Configurar el Hook de sistema para la suspensión y LightDM
+# 7. Servicios del sistema
+# The screen is locked before suspend by xss-lock (started by i3, runs as your
+# user). No system-sleep hook: it would run i3lock as root, which then asks for
+# root's password. Remove the one older versions of this installer created.
 echo "Configurando servicios del sistema..."
-sudo bash -c 'cat > /usr/lib/systemd/system-sleep/betterlockscreen <<EOF
-#!/bin/sh
-if [ "\$1" = "pre" ]; then
-    DISPLAY=:0 /usr/bin/betterlockscreen -l blur
-    sleep 1
-fi
-EOF'
-sudo chmod +x /usr/lib/systemd/system-sleep/betterlockscreen
+sudo rm -f /usr/lib/systemd/system-sleep/betterlockscreen
 
 # Desactivar otros gestores y activar LightDM
 sudo systemctl disable gdm sddm lxdm 2>/dev/null
