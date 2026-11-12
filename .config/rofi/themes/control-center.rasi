@@ -1,0 +1,89 @@
+/* macOS-style Control Center panel: top-right, right under the bar's gear icon. */
+
+configuration {
+    font:               "Adwaita Sans 11";
+    show-icons:         false;
+}
+
+* {
+    background:         #1a1b26e6;
+    background-alt:     #24283b;
+    foreground:         #c0caf5;
+    muted:              #565f89;
+    selected:           #7aa2f7;
+
+    background-color:   transparent;
+    text-color:         @foreground;
+}
+
+window {
+    transparency:       "real";
+    location:           north east;
+    anchor:             north east;
+    x-offset:           -12px;
+    y-offset:           38px;
+    width:              340px;
+    background-color:   @background;
+    border:             1px;
+    border-color:       #414868;
+    border-radius:      14px;
+}
+
+mainbox {
+    padding:            14px;
+    spacing:            10px;
+    children:           [ message, inputbar, listview ];
+}
+
+/* Title ("Control Center", "Wi-Fi: <network>"...) */
+message {
+    padding:            2px 6px;
+}
+
+textbox {
+    font:               "Adwaita Sans Bold 12";
+    text-color:         @foreground;
+}
+
+/* Hidden search field: typing still filters, the password prompt still shows it */
+inputbar {
+    background-color:   @background-alt;
+    border-radius:      10px;
+    padding:            8px 12px;
+    children:           [ prompt, entry ];
+    spacing:            8px;
+}
+
+prompt {
+    text-color:         @selected;
+}
+
+entry {
+    placeholder:        "Search";
+    placeholder-color:  @muted;
+}
+
+listview {
+    lines:              8;
+    dynamic:            true;
+    fixed-height:       false;
+    scrollbar:          false;
+    spacing:            4px;
+}
+
+element {
+    padding:            10px 12px;
+    border-radius:      10px;
+    font:               "JetBrainsMono Nerd Font 11";
+}
+
+element selected {
+    background-color:   @selected;
+    text-color:         #15161e;
+}
+
+element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+    vertical-align:     0.5;
+}
