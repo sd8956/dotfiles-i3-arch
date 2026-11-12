@@ -101,8 +101,10 @@ bindsym $mod+m exec --no-startup-id ~/.config/i3/maximize.sh
 # Mission Control (skippy-xd): key left of 1 (bindcode 49, layout independent).
 # Shift shows the windows of every monitor; skippy paging is not used because
 # it draws each i3 workspace on a page as wide as all monitors (empty halves).
-bindcode $mod+49 exec --no-startup-id skippy-xd --expose
-bindcode $mod+Shift+49 exec --no-startup-id skippy-xd --expose --desktop -1
+# --release: fire once on key release; key auto-repeat would call skippy again,
+# and a second call toggles the overview closed.
+bindcode --release $mod+49 exec --no-startup-id skippy-xd --expose
+bindcode --release $mod+Shift+49 exec --no-startup-id skippy-xd --expose --desktop -1
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -206,8 +208,8 @@ bindsym --release Ctrl+Print exec --no-startup-id ~/.config/i3/screenshot.sh win
 bindsym $mod+e exec thunar
 # --- Editores de Código ---
 # Mod + v -> VS Code
-# Clipboard history (greenclip), Spotlight look; Enter pastes into the clipboard
-bindsym $mod+v exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -display-clipboard "󰅇" -hover-select -me-select-entry MouseSecondary -me-accept-entry '!MousePrimary' -theme ~/.config/rofi/themes/spotlight.rasi -theme-str 'entry { placeholder: "Clipboard History"; }'
+# Clipboard history (greenclip), Spotlight look; see the script for why it is one
+bindsym $mod+v exec --no-startup-id ~/.config/rofi/clipboard.sh
 # Mod + z -> Zed
 bindsym $mod+z exec zeditor
 bindsym $mod+l exec betterlockscreen -l blur

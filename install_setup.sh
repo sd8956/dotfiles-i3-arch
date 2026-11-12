@@ -63,6 +63,7 @@ dconf load /net/launchpad/plank/docks/ < ~/.config/plank/docks.dconf
 
 chmod +x ~/.config/rofi/powermenu.sh
 chmod +x ~/.config/rofi/control-center.sh
+chmod +x ~/.config/rofi/clipboard.sh
 chmod +x ~/.config/i3/sleep_lock.sh
 chmod +x ~/.config/i3/lock_osd.sh
 chmod +x ~/.config/i3/osd_ui.py
