@@ -47,9 +47,9 @@ lockargs=(
     --greeter-text "$locktext" --greeter-pos="ix:iy+r+40" --greeter-align 0
     --greeter-size=19 --greeter-font="Adwaita Sans" --greeter-color=ffffffff
     # Status messages under the password field
-    --verif-text "" --wrong-text "Incorrect password" --wrong-pos="ix:iy+r+122"
+    --verif-text "" --wrong-text "Incorrect password" --wrong-pos="ix:iy+r+130"
     --wrong-align 0 --wrong-size=14 --wrong-font="Adwaita Sans"
-    --modif-pos="ix:iy+r+144" --modif-align 0 --modif-size=13
-    --layout-pos="ix:iy+r+166" --layout-align 0
+    --modif-pos="ix:iy+r+152" --modif-align 0 --modif-size=13
+    --layout-pos="ix:iy+r+174" --layout-align 0
     --noinput-text "No input"
 )

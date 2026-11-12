@@ -73,7 +73,7 @@ magick -size "${fw}x${fh}" xc:none -fill '#ffffff2e' -stroke '#ffffff40' \
     -font "$FONT" -pointsize 13 -fill '#ffffffa6' -stroke none \
     -gravity center -annotate +0+0 "Enter Password" "$work/field.png"
 
-field_top=$((cy + LOCK_RADIUS + 58))
+field_top=$((cy + LOCK_RADIUS + 66))   # 26px under the name (iy+r+40)
 # Dim the wallpaper a bit (like macOS) so the white clock stays readable.
 magick "$BASE" -fill black -colorize 28% \
     "$work/avatar.png" -geometry "+$((cx - LOCK_RADIUS))+$((cy - LOCK_RADIUS))" -composite \
