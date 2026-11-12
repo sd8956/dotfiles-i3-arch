@@ -111,7 +111,10 @@ bindsym $mod+p layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Ctrl+space focus mode_toggle
+
+# Spotlight-style launcher (macOS Cmd+Space)
+bindsym $mod+space exec --no-startup-id rofi -show drun -display-drun "󰍉" -hover-select -me-select-entry MouseSecondary -me-accept-entry '!MousePrimary' -theme ~/.config/rofi/themes/spotlight.rasi
 
 # focus the parent container
 bindsym $mod+a focus parent

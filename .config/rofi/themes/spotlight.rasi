@@ -1,0 +1,92 @@
+/* macOS Spotlight-style launcher: one big search bar in the upper third,
+   results in a single column below it. Opened with $mod+space. */
+
+configuration {
+    show-icons:         true;
+    icon-theme:         "Papirus-Dark";
+    drun-display-format: "{name}";
+    font:               "Adwaita Sans 13";
+}
+
+* {
+    background:         #1a1b26e6;
+    background-alt:     #24283b;
+    foreground:         #c0caf5;
+    muted:              #565f89;
+    selected:           #7aa2f7;
+
+    background-color:   transparent;
+    text-color:         @foreground;
+}
+
+window {
+    transparency:       "real";
+    location:           north;
+    anchor:             north;
+    y-offset:           22%;
+    width:              640px;
+    background-color:   @background;
+    border:             1px;
+    border-color:       #414868;
+    border-radius:      16px;
+}
+
+mainbox {
+    padding:            10px;
+    spacing:            8px;
+    children:           [ inputbar, listview ];
+}
+
+inputbar {
+    padding:            10px 12px;
+    spacing:            12px;
+    children:           [ prompt, entry ];
+}
+
+prompt {
+    font:               "JetBrainsMono Nerd Font 18";
+    text-color:         @muted;
+    vertical-align:     0.5;
+}
+
+entry {
+    font:               "Adwaita Sans 20";
+    placeholder:        "Spotlight Search";
+    placeholder-color:  @muted;
+    vertical-align:     0.5;
+}
+
+listview {
+    lines:              7;
+    columns:            1;
+    dynamic:            true;
+    fixed-height:       false;
+    scrollbar:          false;
+    spacing:            2px;
+    border:             1px 0 0 0;
+    border-color:       #2f3549;
+    padding:            8px 0 0 0;
+}
+
+element {
+    orientation:        horizontal;
+    padding:            8px 12px;
+    spacing:            12px;
+    border-radius:      10px;
+}
+
+element selected {
+    background-color:   @selected;
+    text-color:         #15161e;
+}
+
+element-icon {
+    size:               28px;
+    background-color:   transparent;
+}
+
+element-text {
+    background-color:   transparent;
+    text-color:         inherit;
+    vertical-align:     0.5;
+}
