@@ -40,6 +40,7 @@ Este setup está optimizado para ofrecer el máximo rendimiento en un entorno mu
 * **Login (LightDM + slick-greeter):** mismo wallpaper y avatar que el bloqueo, usuario centrado y reloj de 24 h.
 * **Notificaciones:** Dunst con tarjetas estilo macOS arriba a la derecha: translúcidas, redondeadas, con icono de la app, barra de progreso y borde rojo para alertas críticas (que se quedan hasta cerrarlas).
 * **Historial del portapapeles (`$mod+v`):** lo último que copiaste (texto e imágenes) con el estilo de Spotlight, vía greenclip. El historial queda en `~/.cache` (nunca en el repo) y no registra lo que copian KeePassXC, Bitwarden ni 1Password.
+* **Sin pegado con la rueda:** el click del medio ya no pega lo último que seleccionaste (selección PRIMARY de X11), pero sigue abriendo y cerrando pestañas. Lo bloquea `xmousepasteblock`.
 * **Terminal y Shell:** Ghostty + zsh con Oh My Zsh, Powerlevel10k, autosugerencias y resaltado de sintaxis.
 
 ## ⌨️ Atajos Principales

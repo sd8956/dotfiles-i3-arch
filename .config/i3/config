@@ -255,6 +255,8 @@ exec_always --no-startup-id picom -b
 exec --no-startup-id plank
 exec --no-startup-id skippy-xd --start-daemon
 exec --no-startup-id greenclip daemon
+# Middle click keeps working (open/close tabs) but no longer pastes the selection
+exec --no-startup-id xmousepasteblock
 for_window [class="Rofi"] floating enable
 # Reglas para el OSD del teclado (Candado centrado)
 for_window [class="YadOsd"] floating enable
