@@ -54,7 +54,7 @@ currentMonitor = window
 
 # Set to true for windows to lump to current monitor
 # Set to false for windows to stay in their original monitor
-switchOnCurrentMonitor = true
+switchOnCurrentMonitor = false
 exposeOnCurrentMonitor = true
 pagingOnCurrentMonitor = true
 
@@ -201,8 +201,8 @@ keysRight = Right
 
 keysSelect = Return space
 keysCancel = Escape
-keysNext = n
-keysPrev = p
+keysNext = Tab n
+keysPrev = ISO_Left_Tab p
 
 keysIconify = 1
 keysShade = 2

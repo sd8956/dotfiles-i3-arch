@@ -60,3 +60,8 @@
     frame_color = "#f7768e"
     highlight = "#f7768e"
     timeout = 0
+
+[screenshot]
+    # Bigger thumbnail for screenshots (see ~/.config/i3/screenshot.sh)
+    appname = "Screenshot"
+    max_icon_size = 120

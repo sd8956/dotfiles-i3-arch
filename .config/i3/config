@@ -98,9 +98,11 @@ bindsym $mod+f fullscreen toggle
 # macOS-style maximize: float above the others, keep the bar visible
 bindsym $mod+m exec --no-startup-id ~/.config/i3/maximize.sh
 
-# Mission Control (skippy-xd): key left of 1 (bindcode 49, layout independent)
+# Mission Control (skippy-xd): key left of 1 (bindcode 49, layout independent).
+# Shift shows the windows of every monitor; skippy paging is not used because
+# it draws each i3 workspace on a page as wide as all monitors (empty halves).
 bindcode $mod+49 exec --no-startup-id skippy-xd --expose
-bindcode $mod+Shift+49 exec --no-startup-id skippy-xd --paging
+bindcode $mod+Shift+49 exec --no-startup-id skippy-xd --expose --desktop -1
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -194,8 +196,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym $mod+b exec google-chrome-stable
 bindsym $mod+q kill
-bindsym $mod+Tab exec rofi -show window -theme tokyonight_big1
-bindsym Print exec maim -s | xclip -selection clipboard -t image/png
+# Cmd+Tab style switcher: hold Super, Tab / Shift+Tab to move, release to pick
+bindsym $mod+Tab exec --no-startup-id skippy-xd --switch --next --pivot Super_L
+bindsym $mod+Shift+Tab exec --no-startup-id skippy-xd --switch --prev --pivot Super_L
+# macOS-style screenshots: saved to ~/Pictures/Screenshots + clipboard + thumbnail
+bindsym --release Print exec --no-startup-id ~/.config/i3/screenshot.sh region
+bindsym --release Shift+Print exec --no-startup-id ~/.config/i3/screenshot.sh screen
+bindsym --release Ctrl+Print exec --no-startup-id ~/.config/i3/screenshot.sh window
 bindsym $mod+e exec thunar
 # --- Editores de Código ---
 # Mod + v -> VS Code
