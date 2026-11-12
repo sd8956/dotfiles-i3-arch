@@ -67,6 +67,9 @@ chmod +x ~/.config/i3/sleep_lock.sh
 chmod +x ~/.config/i3/lock_osd.sh
 chmod +x ~/.config/i3/osd_ui.py
 chmod +x ~/.config/i3/maximize.sh
+chmod +x ~/.config/i3/screenshot.sh
+chmod +x ~/.config/betterlockscreen/lockscreen-setup.sh
+chmod +x ~/.config/betterlockscreen/set-login-avatar.sh
 chmod +x ~/.config/i3/wallpaper.sh
 chmod +x ~/.config/autorandr/postswitch
 chmod +x ~/.config/polybar/launch.sh
@@ -120,8 +123,9 @@ rm -rf ~/.config/nvim/.git
 echo "=========================================================="
 echo "¡Instalación completada con éxito!"
 echo "Pasos finales manuales:"
-echo "1. Ejecuta: betterlockscreen -u /ruta/a/tu/fondo.jpg --blur 0.5 --display 1"
-echo "2. Copia tu fondo de login: sudo cp /ruta/fondo.jpg /usr/share/pixmaps/login_bg.jpg"
+echo "1. Bloqueo y login: ~/.config/betterlockscreen/lockscreen-setup.sh y luego"
+echo "   ~/.config/betterlockscreen/set-login-avatar.sh (opcional: tu foto en ~/.face)"
+echo "2. Fondo del login: sudo cp ~/Wallpapers/gargantua-black-3840x2160-9621.jpg /usr/share/pixmaps/login_bg.jpg"
 echo "3. Monitores: acomódalos (arandr o xrandr) y guarda el layout con: autorandr --save <nombre>"
 echo "   Sin perfil propio, las pantallas se ponen una al lado de la otra."
 echo "4. Pon tus tokens/API keys en ~/.zshrc.local (no se versiona)."

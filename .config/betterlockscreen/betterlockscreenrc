@@ -1,7 +1,50 @@
-# Colores TokyoNight
+# TokyoNight macOS-style lock screen (betterlockscreen + i3lock-color).
+#
+# betterlockscreen appends `lockargs` last to i3lock, and i3lock keeps the last
+# value of each option, so the layout below overrides its default positions.
+#
+# The avatar and the "Enter Password" field are drawn into the cached blurred
+# wallpaper by ~/.config/betterlockscreen/lockscreen-setup.sh: run it again
+# after changing the wallpaper or the monitors. Keep LOCK_* in sync with it.
+
 background="#1a1b26"
 ringcolor="#7aa2f7"
 ringvercolor="#9ece6a"
 ringwrongcolor="#f7768e"
 loginbox="#1a1b26"
-font="JetBrainsMono Nerd Font"
+font="Adwaita Sans"
+time_format="%H:%M"
+
+# Clock, avatar and field on the first monitor (xrandr --listmonitors order).
+display_on=0
+
+# Name under the avatar: full name from the user database, else the login name.
+locktext="$(getent passwd "$USER" | cut -d: -f5 | cut -d, -f1)"
+locktext="${locktext:-${USER^}}"
+
+LOCK_AVATAR_Y=0.70      # Avatar center, as a fraction of the monitor height
+LOCK_RADIUS=46          # Avatar radius in px (the typing ring goes around it)
+
+lockargs=(
+    -n
+    # Typing ring around the avatar (transparent inside, so the avatar shows)
+    --ind-pos="x+w/2:y+h*$LOCK_AVATAR_Y"
+    --radius="$LOCK_RADIUS"
+    --ring-width=3
+    --inside-color=00000000 --insidever-color=00000000 --insidewrong-color=00000000
+    --ring-color=ffffff40 --line-color=00000000 --separator-color=00000000
+    # Big clock with the date above it, centered near the top
+    --time-pos="x+w/2:y+h*0.27" --time-align 0 --time-size=112
+    --time-font="Adwaita Sans" --time-color=ffffffee
+    --date-str "%A, %d %B" --date-pos="tx:ty-128" --date-align 0 --date-size=24
+    --date-font="Adwaita Sans" --date-color=ffffffcc
+    # Name under the avatar
+    --greeter-text "$locktext" --greeter-pos="ix:iy+r+40" --greeter-align 0
+    --greeter-size=19 --greeter-font="Adwaita Sans" --greeter-color=ffffffff
+    # Status messages under the password field
+    --verif-text "" --wrong-text "Incorrect password" --wrong-pos="ix:iy+r+122"
+    --wrong-align 0 --wrong-size=14 --wrong-font="Adwaita Sans"
+    --modif-pos="ix:iy+r+144" --modif-align 0 --modif-size=13
+    --layout-pos="ix:iy+r+166" --layout-align 0
+    --noinput-text "No input"
+)
