@@ -7,11 +7,15 @@
 # wallpaper by ~/.config/betterlockscreen/lockscreen-setup.sh: run it again
 # after changing the wallpaper or the monitors. Keep LOCK_* in sync with it.
 
-background="#1a1b26"
-ringcolor="#7aa2f7"
-ringvercolor="#9ece6a"
-ringwrongcolor="#f7768e"
-loginbox="#1a1b26"
+# Colors are rrggbbaa WITHOUT '#': betterlockscreen adds it itself, and a
+# doubled '##' made ImageMagick fail, so the lock image was never generated.
+bgcolor=1a1b26ff
+ringcolor=7aa2f7ff
+ringvercolor=9ece6aff
+ringwrongcolor=f7768eff
+# betterlockscreen's own login box is not used by this layout: transparent.
+loginbox=00000000
+loginshadow=00000000
 font="Adwaita Sans"
 time_format="%H:%M"
 
@@ -19,8 +23,9 @@ time_format="%H:%M"
 display_on=0
 
 # Name under the avatar: full name from the user database, else the login name.
-locktext="$(getent passwd "$USER" | cut -d: -f5 | cut -d, -f1)"
-locktext="${locktext:-${USER^}}"
+_lock_user="$(id -un)"
+locktext="$(getent passwd "$_lock_user" | cut -d: -f5 | cut -d, -f1 || true)"
+locktext="${locktext:-${_lock_user^}}"
 
 LOCK_AVATAR_Y=0.70      # Avatar center, as a fraction of the monitor height
 LOCK_RADIUS=46          # Avatar radius in px (the typing ring goes around it)

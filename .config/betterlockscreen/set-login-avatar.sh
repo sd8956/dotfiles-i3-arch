@@ -9,10 +9,13 @@ src="$HOME/.face"
 [[ -f "$src" ]] || src="${XDG_CACHE_HOME:-$HOME/.cache}/betterlockscreen/avatar.png"
 [[ -f "$src" ]] || { echo "No avatar: run lockscreen-setup.sh first (or add ~/.face)." >&2; exit 1; }
 
-icon="$ACCOUNTS_DIR/icons/$USER"
-users="$ACCOUNTS_DIR/users/$USER"
+user="$(id -un)"   # Not $USER: the environment can be changed
+icon="$ACCOUNTS_DIR/icons/$user"
+users="$ACCOUNTS_DIR/users/$user"
 
-sudo install -Dm644 "$src" "$icon"
+# Read the avatar as the user (stdin), so root never follows a symlinked
+# ~/.face to a file the user could not read.
+sudo install -Dm644 /dev/stdin "$icon" < "$src"
 
 if ! sudo test -f "$users"; then
     printf '[User]\nIcon=%s\n' "$icon" | sudo install -Dm600 /dev/stdin "$users"

@@ -15,8 +15,10 @@ set -euo pipefail
 
 RC="$HOME/.config/betterlockscreen/betterlockscreenrc"
 CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/betterlockscreen/current"
-BLUR="$CACHE/wall_blur.png"
-BASE="$CACHE/wall_blur.base.png"       # Clean copy, so redraws never stack
+# `betterlockscreen -l blur` locks with lock_blur.png (wall_blur.png plus its
+# login box, transparent in our rc), so that is the image to draw on.
+BLUR="$CACHE/lock_blur.png"
+BASE="$CACHE/lock_blur.base.png"       # Clean copy, so redraws never stack
 DEFAULT_WALLPAPER="$HOME/Wallpapers/gargantua-black-3840x2160-9621.jpg"
 FONT="Adwaita-Sans"
 FONT_BOLD="Adwaita-Sans-Bold"
@@ -28,6 +30,7 @@ source "$RC"
 
 if [[ "${1:-}" != "--redraw" ]]; then
     betterlockscreen -u "${1:-$DEFAULT_WALLPAPER}" --blur 0.5
+    [[ -f "$BLUR" ]] || { echo "betterlockscreen did not create $BLUR." >&2; exit 1; }
     cp "$BLUR" "$BASE"
 fi
 [[ -f "$BASE" ]] || { echo "No cache yet: run without --redraw first." >&2; exit 1; }
