@@ -6,7 +6,11 @@ THEME="$HOME/.config/rofi/themes/control-center.rasi"
 
 menu() {  # menu <title> <entries...>: prints the selected index, empty on Esc
     local title="$1"; shift
-    printf '%s\n' "$@" | rofi -dmenu -i -format i -no-custom -p "󰍉" -mesg "$title" -theme "$THEME"
+    # One click accepts on button release (rofi's default is double click). Acting on
+    # release also keeps the click from leaking into the next menu (e.g. Power).
+    printf '%s\n' "$@" | rofi -dmenu -i -format i -no-custom -p "󰍉" -mesg "$title" \
+        -hover-select -me-select-entry MouseSecondary -me-accept-entry '!MousePrimary' \
+        -theme "$THEME"
 }
 
 notify() { notify-send -a "Control Center" "$1" "${2:-}"; }
@@ -15,7 +19,13 @@ on_off() { [[ "$1" == "yes" ]] && echo "On" || echo "Off"; }
 
 # ---------- state ----------
 wifi_enabled() { [[ "$(nmcli -t -f WIFI radio 2>/dev/null)" == "enabled" ]]; }
-wifi_ssid()    { nmcli -t -f ACTIVE,SSID device wifi 2>/dev/null | awk -F: '$1 == "yes" { print $2; exit }'; }
+# Never call `nmcli device wifi` without --rescan no here: with a stale scan it
+# blocks for seconds while NetworkManager rescans.
+wifi_ssid() {
+    local name
+    name=$(nmcli -t -f NAME,TYPE connection show --active 2>/dev/null | awk -F: '$2 == "802-11-wireless" { print $1; exit }')
+    [[ -n "$name" ]] && nmcli -g 802-11-wireless.ssid connection show "$name" 2>/dev/null
+}
 bt_powered()   { bluetoothctl show 2>/dev/null | grep -q "Powered: yes"; }
 volume()       { pactl get-sink-volume @DEFAULT_SINK@ 2>/dev/null | grep -oE '[0-9]+%' | head -1; }
 muted()        { pactl get-sink-mute @DEFAULT_SINK@ 2>/dev/null | grep -q yes; }
@@ -38,7 +48,7 @@ wifi_menu() {
         seen[$ssid]=1
         ssids+=("$ssid")
         rows+=("$([[ "$in_use" == "*" ]] && echo "󰄬" || echo "󰤨")  $ssid  ${signal}%$([[ -n "$security" && "$security" != "--" ]] && echo "  󰌾")")
-    done < <(nmcli -t -f IN-USE,SIGNAL,SECURITY,SSID device wifi list 2>/dev/null)
+    done < <(nmcli -t -f IN-USE,SIGNAL,SECURITY,SSID device wifi list --rescan no 2>/dev/null)
     local n=${#ssids[@]}
     rows+=("󰖪  Turn Wi-Fi Off" "󰒓  Network Settings…")
 
@@ -128,6 +138,8 @@ sound_menu() {
 }
 
 # ---------- main ----------
+# Refresh the network list in the background; the Wi-Fi menu reads the cache.
+nmcli device wifi rescan >/dev/null 2>&1 &
 while true; do
     wifi_label="Off"; wifi_enabled && wifi_label="$(wifi_ssid)"; wifi_label="${wifi_label:-Not connected}"
     bt_label="Off"; bt_powered && bt_label="On"
