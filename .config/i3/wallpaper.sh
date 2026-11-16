@@ -19,8 +19,11 @@ if [[ -f "$VIDEO" ]] && command -v xwinwrap >/dev/null && command -v mpv >/dev/n
     # One player per monitor, using its real geometry: WIDTHxHEIGHT+X+Y
     xrandr --query | awk '/ connected/' | grep -oE '[0-9]+x[0-9]+\+[0-9]+\+[0-9]+' |
         while read -r geometry; do
+            # --cursor-autohide=no: while rofi grabs the pointer mpv stops getting
+            # motion events and would hide the cursor over the wallpaper.
             xwinwrap -g "$geometry" -ov -- mpv -wid WID --no-audio --loop --no-osc \
                 --no-osd-bar --no-input-default-bindings --hwdec=auto --panscan=1.0 \
+                --cursor-autohide=no \
                 "$VIDEO" >/dev/null 2>&1 9>&- &
         done
 elif [[ -f "$IMAGE" ]] && command -v feh >/dev/null; then
