@@ -261,6 +261,8 @@ for_window [class="Rofi"] floating enable
 # Reglas para el OSD del teclado (Candado centrado)
 for_window [class="YadOsd"] floating enable
 for_window [class="YadOsd"] border pixel 0
+# Calendar popup opened from the polybar clock
+for_window [class="PolybarCalendar"] floating enable, border pixel 0
 # Invisible slot keeper used by maximize.sh
 for_window [class="MaxPlaceholder"] border pixel 0
 exec_always --no-startup-id /usr/bin/lxqt-policykit-agent &

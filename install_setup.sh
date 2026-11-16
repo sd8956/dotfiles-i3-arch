@@ -77,6 +77,7 @@ chmod +x ~/.config/autorandr/postswitch
 chmod +x ~/.config/polybar/launch.sh
 chmod +x ~/.config/polybar/scripts/active-app.sh
 chmod +x ~/.config/polybar/scripts/media.sh
+chmod +x ~/.config/polybar/scripts/calendar.sh
 
 # 5. Shell: Oh My Zsh + Powerlevel10k + plugins
 echo "Configurando zsh (Oh My Zsh, Powerlevel10k y plugins)..."

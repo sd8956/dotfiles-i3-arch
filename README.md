@@ -114,7 +114,7 @@ El script escribe en la carpeta donde vive (sin importar dónde clonaste el repo
 ## 📂 Estructura del Repositorio
 
 * `.config/i3/`: Configuración principal del gestor de ventanas, scripts de bloqueo (Bash), OSD (Python), maximizar (`maximize.sh`), fondo animado (`wallpaper.sh`) y capturas (`screenshot.sh`).
-* `.config/polybar/`: Barra superior estilo macOS, su lanzador y los scripts de la app enfocada y del reproductor.
+* `.config/polybar/`: Barra superior estilo macOS, su lanzador y los scripts de la app enfocada, del reproductor y del calendario que se abre al hacer click en la fecha.
 * `.config/picom/`: Compositor (blur, sombras, esquinas redondeadas y animaciones).
 * `.config/plank/` y `.local/share/plank/themes/`: Lanzadores y ajustes del dock (`docks.dconf`) y su tema TokyoNight.
 * `.config/autorandr/`: Perfil de monitores de cada PC y hook que reacomoda wallpaper y barra.
