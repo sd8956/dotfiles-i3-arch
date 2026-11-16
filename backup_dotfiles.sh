@@ -44,5 +44,6 @@ fi
 echo "Copiando configuraciones del sistema (LightDM)..."
 cp /etc/lightdm/lightdm.conf "$DIR/system/etc/lightdm/" 2>/dev/null || echo "⚠️  No se encontró lightdm.conf"
 cp /etc/lightdm/slick-greeter.conf "$DIR/system/etc/lightdm/" 2>/dev/null || echo "⚠️  No se encontró slick-greeter.conf"
+cp /etc/lightdm/display-setup.sh "$DIR/system/etc/lightdm/" 2>/dev/null || echo "⚠️  No se encontró display-setup.sh"
 
 echo "¡Respaldo completado! Revisa la carpeta con 'ls -la $DIR'"

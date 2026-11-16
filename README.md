@@ -126,7 +126,7 @@ El script escribe en la carpeta donde vive (sin importar dónde clonaste el repo
 * `.config/ghostty/` y `.config/gtk-3.0/`: Terminal y tema GTK.
 * `.zshrc` y `.p10k.zsh`: Shell (Oh My Zsh + Powerlevel10k).
 * `Wallpapers/`: Fondos usados por el escritorio (video animado e imagen estática).
-* `system/etc/lightdm/`: Configuración del gestor de login (LightDM + slick-greeter).
+* `system/etc/lightdm/`: Configuración del gestor de login (LightDM + slick-greeter). `display-setup.sh` aplica el mismo orden de monitores que la sesión (DP-0 a la izquierda, DP-2 a la derecha) antes de mostrar el login.
 * `backup_dotfiles.sh`: Respalda la configuración actual del sistema al repositorio.
 * `install_setup.sh`: Script de instalación y despliegue automatizado.
 
